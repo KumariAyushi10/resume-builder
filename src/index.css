@@ -1,0 +1,227 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 262 83% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 262 83% 58%;
+  --radius: 0.5rem;
+  --text-color-light: #1f2937; 
+  --text-color-dark: #f3f4f6; 
+  --resume-preview-bg: #ffffff; 
+  --resume-preview-text: #111827; 
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 262 83% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 262 83% 58%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resume-preview {
+  background-color: var(--resume-preview-bg) !important;
+  color: var(--resume-preview-text) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.resume-preview.interactive-preview {
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 0.3s ease;
+}
+
+.resume-preview.interactive-preview:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.pdf-export-styles {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 210mm !important;
+  min-height: 297mm !important;
+  overflow: hidden !important;
+}
+
+.pdf-export-styles *, .pdf-export-styles ::before, .pdf-export-styles ::after {
+  color: inherit !important; 
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: #000000 !important;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #ffffff !important;
+  }
+  #pdf-export-resume-preview, .resume-preview.pdf-export-styles {
+    transform: none !important;
+    box-shadow: none !important;
+    color: #000000 !important; 
+    background-color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    page-break-inside: avoid !important;
+    overflow: hidden !important;
+  }
+  #pdf-export-resume-preview *, .resume-preview.pdf-export-styles * {
+    color: inherit !important; 
+    background-color: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    border-color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.resume-preview .text-gray-800, .dark .resume-preview .text-gray-800 { color: #1f2937 !important; }
+.resume-preview .text-gray-700, .dark .resume-preview .text-gray-700 { color: #374151 !important; }
+.resume-preview .text-gray-600, .dark .resume-preview .text-gray-600 { color: #4b5563 !important; }
+.resume-preview .text-gray-500, .dark .resume-preview .text-gray-500 { color: #6b7280 !important; }
+.resume-preview .text-gray-400, .dark .resume-preview .text-gray-400 { color: #9ca3af !important; }
+.resume-preview .text-gray-300, .dark .resume-preview .text-gray-300 { color: #d1d5db !important; }
+.resume-preview .text-gray-200, .dark .resume-preview .text-gray-200 { color: #e5e7eb !important; }
+
+.resume-preview:not(.pdf-export-styles) h1,
+.resume-preview:not(.pdf-export-styles) h2,
+.resume-preview:not(.pdf-export-styles) h3,
+.resume-preview:not(.pdf-export-styles) h4,
+.resume-preview:not(.pdf-export-styles) p,
+.resume-preview:not(.pdf-export-styles) span,
+.resume-preview:not(.pdf-export-styles) div:not([class*="bg-"]) {
+  color: var(--resume-preview-text) !important;
+}
+
+.dark .resume-preview:not(.pdf-export-styles) h1,
+.dark .resume-preview:not(.pdf-export-styles) h2,
+.dark .resume-preview:not(.pdf-export-styles) h3,
+.dark .resume-preview:not(.pdf-export-styles) h4,
+.dark .resume-preview:not(.pdf-export-styles) p,
+.dark .resume-preview:not(.pdf-export-styles) span,
+.dark .resume-preview:not(.pdf-export-styles) div:not([class*="bg-"]) {
+  color: var(--resume-preview-text) !important;
+}
+
+.resume-preview:not(.pdf-export-styles) svg, .dark .resume-preview:not(.pdf-export-styles) svg {
+  color: inherit !important; 
+}
+
+.resume-preview:not(.pdf-export-styles) [style*="color: var(--text-color-light)"],
+.dark .resume-preview:not(.pdf-export-styles) [style*="color: var(--text-color-light)"] {
+  color: var(--resume-preview-text) !important;
+}
+.resume-preview:not(.pdf-export-styles) [style*="color: var(--text-color-dark)"],
+.dark .resume-preview:not(.pdf-export-styles) [style*="color: var(--text-color-dark)"] {
+  color: var(--resume-preview-text) !important;
+}
